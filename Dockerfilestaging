@@ -1,0 +1,19 @@
+FROM node:16.14.0
+
+ENV PORT 3000
+
+# Create app_staging directory
+WORKDIR /app_staging
+COPY . /app_staging
+
+ENV NODE_OPTIONS=--max_old_space_size=8192
+# Installing dependencies
+
+RUN yarn install
+
+# Building app_staging
+RUN yarn build
+EXPOSE 3001
+
+# Running the app_staging
+CMD  "npm" "run" "staging"

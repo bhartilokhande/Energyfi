@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  energyfi_fe:
+    ports:
+      - 3000:3000
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5" # number of files or file count
+        max-size: "10m" # file size
+
+  energyfi_fe_staging:
+    ports:
+      - 3001:3001
+    build:
+      context: ./
+      dockerfile: Dockerfilestaging
+
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5" # number of files or file count
+        max-size: "10m" # file size
